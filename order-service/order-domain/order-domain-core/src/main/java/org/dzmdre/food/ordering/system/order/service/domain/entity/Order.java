@@ -72,7 +72,6 @@ public class Order extends AggregateRoot<OrderId> {
         updateFailureMessages(failureMessages);
     }
 
-
     private void updateFailureMessages(List<String> failureMessages) {
         if (this.failureMessages == null) {
             this.failureMessages = failureMessages;
