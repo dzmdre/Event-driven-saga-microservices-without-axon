@@ -24,6 +24,6 @@ hs_err_pid*
 replay_pid*
 /common/common.iml
 /common/common-domain/common-domain.iml
-/order-service/order-messaging/order-messaging.iml
-/.fastRequest/config/fastRequestCurrentProjectConfig.json
+*.iml
 /.idea/*
+/.fastRequest/*
