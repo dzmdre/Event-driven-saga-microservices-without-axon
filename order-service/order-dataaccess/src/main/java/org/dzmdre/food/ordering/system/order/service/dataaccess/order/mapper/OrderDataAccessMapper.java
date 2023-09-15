@@ -4,8 +4,9 @@ import org.dzmdre.food.ordering.system.domain.valueobject.*;
 import org.dzmdre.food.ordering.system.order.service.dataaccess.order.entity.OrderAddressEntity;
 import org.dzmdre.food.ordering.system.order.service.dataaccess.order.entity.OrderEntity;
 import org.dzmdre.food.ordering.system.order.service.dataaccess.order.entity.OrderItemEntity;
-import org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderItem;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
+import org.dzmdre.food.ordering.system.order.service.domain.entity.OrderItem;
+import org.dzmdre.food.ordering.system.order.service.domain.entity.Product;
 import org.dzmdre.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class OrderDataAccessMapper {
                 .trackingId(order.getTrackingId().getValue())
                 .address(deliveryAddressToAddressEntity(order.getDeliveryAddress()))
                 .price(order.getPrice().getAmount())
-                //TODO:  .items(orderItemsToOrderItemEntities(order.getItems()))
+                .items(orderItemsToOrderItemEntities(order.getItems()))
                 .orderStatus(order.getOrderStatus())
                 .failureMessages(order.getFailureMessages() != null ?
                         String.join(FAILURE_MESSAGE_DELIMITER, order.getFailureMessages()) : "")
@@ -40,12 +41,12 @@ public class OrderDataAccessMapper {
 
     public Order orderEntityToOrder(OrderEntity orderEntity) {
         return Order.builder()
-                //TODO:  .orderId(new OrderId(orderEntity.getId()))
+                .orderId(new OrderId(orderEntity.getId()))
                 .customerId(new CustomerId(orderEntity.getCustomerId()))
                 .restaurantId(new RestaurantId(orderEntity.getRestaurantId()))
                 .deliveryAddress(addressEntityToDeliveryAddress(orderEntity.getAddress()))
                 .price(new Money(orderEntity.getPrice()))
-                //TODO: .items(orderItemEntitiesToOrderItems(orderEntity.getItems()))
+                .items(orderItemEntitiesToOrderItems(orderEntity.getItems()))
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
                 .orderStatus(orderEntity.getOrderStatus())
                 .failureMessages(orderEntity.getFailureMessages().isEmpty() ? new ArrayList<>() :
@@ -57,11 +58,11 @@ public class OrderDataAccessMapper {
     private List<OrderItem> orderItemEntitiesToOrderItems(List<OrderItemEntity> items) {
         return items.stream()
                 .map(orderItemEntity -> OrderItem.builder()
-                        //TODO:    .orderItemId(new OrderItemId(orderItemEntity.getId()))
-                        //TODO: .product(new Product(new ProductId(orderItemEntity.getProductId())))
-                        //TODO: .price(new Money(orderItemEntity.getPrice()))
+                        .orderItemId(new OrderItemId(orderItemEntity.getId()))
+                        .product(new Product(new ProductId(orderItemEntity.getProductId())))
+                        .price(new Money(orderItemEntity.getPrice()))
                         .quantity(orderItemEntity.getQuantity())
-                        //TODO:  .subTotal(new Money(orderItemEntity.getSubTotal()))
+                        .subTotal(new Money(orderItemEntity.getSubTotal()))
                         .build())
                 .collect(Collectors.toList());
     }
@@ -76,11 +77,11 @@ public class OrderDataAccessMapper {
     private List<OrderItemEntity> orderItemsToOrderItemEntities(List<OrderItem> items) {
         return items.stream()
                 .map(orderItem -> OrderItemEntity.builder()
-                        //TODO:  .id(orderItem.getId().getValue())
-                        //TODO:   .productId(orderItem.getProduct().getId().getValue())
-                        //TODO:   .price(orderItem.getPrice().getAmount())
+                        .id(orderItem.getId().getValue())
+                        .productId(orderItem.getProduct().getId().getValue())
+                        .price(orderItem.getPrice().getAmount())
                         .quantity(orderItem.getQuantity())
-                        //TODO:   .subTotal(orderItem.getSubTotal().getAmount())
+                        .subTotal(orderItem.getSubTotal().getAmount())
                         .build())
                 .collect(Collectors.toList());
     }

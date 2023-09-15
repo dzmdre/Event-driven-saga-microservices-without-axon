@@ -7,7 +7,6 @@ import org.dzmdre.food.ordering.system.domain.valueobject.Money;
 import org.dzmdre.food.ordering.system.domain.valueobject.OrderId;
 import org.dzmdre.food.ordering.system.domain.valueobject.OrderItemId;
 
-@Builder
 @Getter
 public class OrderItem extends BaseEntity<OrderItemId> {
     private OrderId orderId;
@@ -15,6 +14,21 @@ public class OrderItem extends BaseEntity<OrderItemId> {
     private final int quantity;
     private final Money price;
     private final Money subTotal;
+
+    @Builder
+    public OrderItem(final OrderId orderId,
+                     final Product product,
+                     final int quantity,
+                     final Money price,
+                     final Money subTotal,
+                     final OrderItemId orderItemId) {
+        this.orderId = orderId;
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
+        this.subTotal = subTotal;
+        setId(orderItemId);
+    }
 
     void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
         this.orderId = orderId;

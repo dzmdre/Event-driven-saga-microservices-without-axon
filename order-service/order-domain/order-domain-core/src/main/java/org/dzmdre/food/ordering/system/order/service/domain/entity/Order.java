@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Builder
 @Slf4j
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;
@@ -26,6 +25,27 @@ public class Order extends AggregateRoot<OrderId> {
     private List<String> failureMessages;
 
     public static final String FAILURE_MESSAGE_DELIMITER = ",";
+
+    @Builder
+    public Order(CustomerId customerId,
+                 RestaurantId restaurantId,
+                 StreetAddress deliveryAddress,
+                 Money price,
+                 List<OrderItem> items,
+                 TrackingId trackingId,
+                 OrderStatus orderStatus,
+                 List<String> failureMessages,
+                 OrderId orderId) {
+        this.customerId = customerId;
+        this.restaurantId = restaurantId;
+        this.deliveryAddress = deliveryAddress;
+        this.price = price;
+        this.items = items;
+        this.trackingId = trackingId;
+        this.orderStatus = orderStatus;
+        this.failureMessages = failureMessages;
+        setId(orderId);
+    }
 
     public void initializeOrder() {
         log.debug("Initializing order");
@@ -50,7 +70,7 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     public void approve() {
-        if(orderStatus != OrderStatus.PAID) {
+        if (orderStatus != OrderStatus.PAID) {
             throw new OrderDomainException("Order is not in correct state for approve operation!");
         }
         orderStatus = OrderStatus.APPROVED;
@@ -100,7 +120,7 @@ public class Order extends AggregateRoot<OrderId> {
 
         if (!this.price.equals(orderItemsTotal)) {
             throw new OrderDomainException("Total price: " + this.price.getAmount()
-                + " is not equal to Order items total: " + orderItemsTotal.getAmount() + "!");
+                    + " is not equal to Order items total: " + orderItemsTotal.getAmount() + "!");
         }
     }
 
@@ -117,37 +137,4 @@ public class Order extends AggregateRoot<OrderId> {
                         super.getId(),
                         new OrderItemId(UUID.randomUUID().getMostSignificantBits())));
     }
-
-    public CustomerId getCustomerId() {
-        return customerId;
-    }
-
-    public RestaurantId getRestaurantId() {
-        return restaurantId;
-    }
-
-    public StreetAddress getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public Money getPrice() {
-        return price;
-    }
-
-    public List<OrderItem> getItems() {
-        return items;
-    }
-
-    public TrackingId getTrackingId() {
-        return trackingId;
-    }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public List<String> getFailureMessages() {
-        return failureMessages;
-    }
-
 }
