@@ -18,12 +18,15 @@
 *.zip
 *.tar.gz
 *.rar
+*.lst
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-/common/common.iml
-/common/common-domain/common-domain.iml
 *.iml
 /.idea/*
 /.fastRequest/*
+*/target/*
+/infrastructure/kafka/kafka-model/src/main/java/org/dzmdre/food/ordering/system/kafka/order/avro/model/*.java
+/infrastructure/kafka/kafka-model/target/maven-archiver/*
+/infrastructure/kafka/kafka-model/target/classes/avro/*
