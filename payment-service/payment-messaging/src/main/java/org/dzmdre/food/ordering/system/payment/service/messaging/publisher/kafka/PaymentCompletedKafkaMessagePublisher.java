@@ -1,5 +1,6 @@
 package org.dzmdre.food.ordering.system.payment.service.messaging.publisher.kafka;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import org.dzmdre.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.dzmdre.food.ordering.system.kafka.producer.service.KafkaProducer;
@@ -7,7 +8,6 @@ import org.dzmdre.food.ordering.system.payment.service.domain.config.PaymentServ
 import org.dzmdre.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
 import org.dzmdre.food.ordering.system.payment.service.domain.ports.output.message.publisher.PaymentCompletedMessagePublisher;
 import org.dzmdre.food.ordering.system.payment.service.messaging.mapper.PaymentMessagingDataMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j

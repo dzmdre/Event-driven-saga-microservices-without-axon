@@ -1,9 +1,9 @@
 package org.dzmdre.food.ordering.system.payment.service.domain.dto;
 
-import org.dzmdre.food.ordering.system.domain.valueobject.PaymentOrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.dzmdre.food.ordering.system.domain.valueobject.PaymentOrderStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;

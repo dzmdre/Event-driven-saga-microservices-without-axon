@@ -1,7 +1,7 @@
 package org.dzmdre.food.ordering.system.payment.service.dataaccess.payment.entity;
 
-import org.dzmdre.food.ordering.system.domain.valueobject.PaymentStatus;
 import lombok.*;
+import org.dzmdre.food.ordering.system.domain.valueobject.PaymentStatus;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,6 +14,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "payments")
 @Entity
 public class PaymentEntity {
@@ -26,17 +27,4 @@ public class PaymentEntity {
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
     private ZonedDateTime createdAt;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PaymentEntity that = (PaymentEntity) o;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

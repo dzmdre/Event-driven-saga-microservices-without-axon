@@ -5,6 +5,7 @@ import org.dzmdre.food.ordering.system.dataaccess.restaurant.entity.RestaurantEn
 import org.dzmdre.food.ordering.system.dataaccess.restaurant.exception.RestaurantDAOException;
 import org.dzmdre.food.ordering.system.domain.valueobject.Money;
 import org.dzmdre.food.ordering.system.domain.valueobject.ProductId;
+import org.dzmdre.food.ordering.system.domain.valueobject.RestaurantId;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Product;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Restaurant;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,7 @@ public class RestaurantDataAccessMapper {
                         new Money(entity.getProductPrice()))).toList();
 
         return Restaurant.builder()
-               // .(new RestaurantId(restaurantEntity.getRestaurantId()))
+                .restaurantId(new RestaurantId(restaurantEntity.getRestaurantId()))
                 .products(restaurantProducts)
                 .active(restaurantEntity.getRestaurantActive())
                 .build();

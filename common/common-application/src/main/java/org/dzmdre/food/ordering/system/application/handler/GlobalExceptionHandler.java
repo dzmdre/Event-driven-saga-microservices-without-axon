@@ -31,19 +31,19 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {ValidationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorDTO handleException(ValidationException validationException) {
-       ErrorDTO errorDTO;
-       String exceptionMessage;
-       if (validationException instanceof ConstraintViolationException) {
-           exceptionMessage = extractViolationsFromException((ConstraintViolationException) validationException);
-       } else {
-           exceptionMessage = validationException.getMessage();
-       }
-       log.error(exceptionMessage, validationException);
-       errorDTO = ErrorDTO.builder()
+        ErrorDTO errorDTO;
+        String exceptionMessage;
+        if (validationException instanceof ConstraintViolationException) {
+            exceptionMessage = extractViolationsFromException((ConstraintViolationException) validationException);
+        } else {
+            exceptionMessage = validationException.getMessage();
+        }
+        log.error(exceptionMessage, validationException);
+        errorDTO = ErrorDTO.builder()
                 .code(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .message(exceptionMessage)
                 .build();
-       return errorDTO;
+        return errorDTO;
     }
 
     private String extractViolationsFromException(ConstraintViolationException validationException) {

@@ -1,12 +1,11 @@
 package org.dzmdre.food.ordering.system.order.service.messaging.listener.kafka;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.kafka.consumer.KafkaConsumer;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.OrderApprovalStatus;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
-import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
 import org.dzmdre.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -33,7 +32,7 @@ public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<Re
 
     @Override
     @KafkaListener(id = "${kafka-consumer-config.restaurant-approval-consumer-group-id}",
-                topics = "${order-service.restaurant-approval-response-topic-name}")
+            topics = "${order-service.restaurant-approval-response-topic-name}")
     public void receive(@Payload List<RestaurantApprovalResponseAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,

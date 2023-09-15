@@ -1,5 +1,6 @@
 package org.dzmdre.food.ordering.system.order.service.messaging.publisher.kafka;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import org.dzmdre.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.dzmdre.food.ordering.system.kafka.producer.service.KafkaProducer;
@@ -7,7 +8,6 @@ import org.dzmdre.food.ordering.system.order.service.domain.config.OrderServiceC
 import org.dzmdre.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import org.dzmdre.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -49,8 +49,8 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
 
             log.info("PaymentRequestAvroModel sent to Kafka for order id: {}", paymentRequestAvroModel.getOrderId());
         } catch (Exception e) {
-           log.error("Error while sending PaymentRequestAvroModel message" +
-                   " to kafka with order id: {}, error: {}", orderId, e.getMessage());
+            log.error("Error while sending PaymentRequestAvroModel message" +
+                    " to kafka with order id: {}, error: {}", orderId, e.getMessage());
         }
     }
 }

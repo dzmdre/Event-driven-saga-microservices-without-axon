@@ -1,6 +1,9 @@
 package org.dzmdre.food.ordering.system.order.service.domain.mapper;
 
-import org.dzmdre.food.ordering.system.domain.valueobject.*;
+import org.dzmdre.food.ordering.system.domain.valueobject.CustomerId;
+import org.dzmdre.food.ordering.system.domain.valueobject.Money;
+import org.dzmdre.food.ordering.system.domain.valueobject.ProductId;
+import org.dzmdre.food.ordering.system.domain.valueobject.RestaurantId;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderAddress;
@@ -21,20 +24,20 @@ public class OrderDataMapper {
 
     public Restaurant createOrderCommandToRestaurant(CreateOrderCommand createOrderCommand) {
         return Restaurant.builder()
-                //TODO: add restaurant ID .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
+                .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .products(createOrderCommand.getItems().stream().map(orderItem ->
-                        new Product(new ProductId(orderItem.getProductId())))
+                                new Product(new ProductId(orderItem.getProductId())))
                         .collect(Collectors.toList()))
                 .build();
     }
-    
+
     public Order createOrderCommandToOrder(CreateOrderCommand createOrderCommand) {
         return Order.builder()
                 .customerId(new CustomerId(createOrderCommand.getCustomerId()))
                 .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getAddress()))
                 .price(new Money(createOrderCommand.getPrice()))
-                //TODO: add .items(orderItemsToOrderItemEntities(createOrderCommand.getItems()))
+                .items(orderItemsToOrderItemEntities(createOrderCommand.getItems()))
                 .build();
     }
 
@@ -59,10 +62,10 @@ public class OrderDataMapper {
         return orderItems.stream()
                 .map(orderItem ->
                         OrderItem.builder()
-                                //TODO:  .product(new Product(new ProductId(orderItem.getProductId())))
-                                //TODO:    .price(new Money(orderItem.getPrice()))
+                                .product(new Product(new ProductId(orderItem.getProductId())))
+                                .price(new Money(orderItem.getPrice()))
                                 .quantity(orderItem.getQuantity())
-                                //TODO:  .subTotal(new Money(orderItem.getSubTotal()))
+                                .subTotal(new Money(orderItem.getSubTotal()))
                                 .build()).collect(Collectors.toList());
     }
 

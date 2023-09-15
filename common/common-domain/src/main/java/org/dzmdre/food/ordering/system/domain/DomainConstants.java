@@ -1,9 +1,5 @@
 package org.dzmdre.food.ordering.system.domain;
 
-public class DomainConstants {
-
-    private DomainConstants() {
-    }
-
+public interface DomainConstants {
     public static final String UTC = "UTC";
 }

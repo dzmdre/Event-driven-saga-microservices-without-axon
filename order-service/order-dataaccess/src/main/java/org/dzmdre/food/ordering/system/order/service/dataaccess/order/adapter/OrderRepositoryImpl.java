@@ -1,10 +1,10 @@
 package org.dzmdre.food.ordering.system.order.service.dataaccess.order.adapter;
 
+import org.dzmdre.food.ordering.system.domain.valueobject.TrackingId;
 import org.dzmdre.food.ordering.system.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import org.dzmdre.food.ordering.system.order.service.dataaccess.order.repository.OrderJpaRepository;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
-import org.dzmdre.food.ordering.system.domain.valueobject.TrackingId;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

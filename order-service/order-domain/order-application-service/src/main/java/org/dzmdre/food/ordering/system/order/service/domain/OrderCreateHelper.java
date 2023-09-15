@@ -1,5 +1,6 @@
 package org.dzmdre.food.ordering.system.order.service.domain;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Customer;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
@@ -11,7 +12,6 @@ import org.dzmdre.food.ordering.system.order.service.domain.ports.output.message
 import org.dzmdre.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

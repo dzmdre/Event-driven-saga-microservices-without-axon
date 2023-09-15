@@ -14,17 +14,15 @@ import java.util.UUID;
 @Getter
 @Slf4j
 public class Order extends AggregateRoot<OrderId> {
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
     private final CustomerId customerId;
     private final RestaurantId restaurantId;
     private final StreetAddress deliveryAddress;
     private final Money price;
     private final List<OrderItem> items;
-
     private TrackingId trackingId;
     private OrderStatus orderStatus = OrderStatus.PENDING;
     private List<String> failureMessages;
-
-    public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
     @Builder
     public Order(CustomerId customerId,

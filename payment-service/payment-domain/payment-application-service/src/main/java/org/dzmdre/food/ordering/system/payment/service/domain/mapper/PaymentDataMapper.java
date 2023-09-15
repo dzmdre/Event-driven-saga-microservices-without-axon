@@ -5,7 +5,6 @@ import org.dzmdre.food.ordering.system.domain.valueobject.Money;
 import org.dzmdre.food.ordering.system.domain.valueobject.OrderId;
 import org.dzmdre.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import org.dzmdre.food.ordering.system.payment.service.domain.entity.Payment;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

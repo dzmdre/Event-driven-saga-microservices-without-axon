@@ -1,7 +1,7 @@
 package org.dzmdre.food.ordering.system.order.service.dataaccess.order.entity;
 
-import org.dzmdre.food.ordering.system.domain.valueobject.OrderStatus;
 import lombok.*;
+import org.dzmdre.food.ordering.system.domain.valueobject.OrderStatus;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

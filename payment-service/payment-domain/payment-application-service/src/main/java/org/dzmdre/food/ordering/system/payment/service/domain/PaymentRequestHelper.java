@@ -1,5 +1,6 @@
 package org.dzmdre.food.ordering.system.payment.service.domain;
 
+import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.domain.valueobject.CustomerId;
 import org.dzmdre.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import org.dzmdre.food.ordering.system.payment.service.domain.entity.CreditEntry;
@@ -14,7 +15,6 @@ import org.dzmdre.food.ordering.system.payment.service.domain.ports.output.messa
 import org.dzmdre.food.ordering.system.payment.service.domain.ports.output.repository.CreditEntryRepository;
 import org.dzmdre.food.ordering.system.payment.service.domain.ports.output.repository.CreditHistoryRepository;
 import org.dzmdre.food.ordering.system.payment.service.domain.ports.output.repository.PaymentRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

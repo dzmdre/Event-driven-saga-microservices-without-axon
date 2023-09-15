@@ -9,11 +9,11 @@ import org.dzmdre.food.ordering.system.domain.valueobject.OrderItemId;
 
 @Getter
 public class OrderItem extends BaseEntity<OrderItemId> {
-    private OrderId orderId;
     private final Product product;
     private final int quantity;
     private final Money price;
     private final Money subTotal;
+    private OrderId orderId;
 
     @Builder
     public OrderItem(final OrderId orderId,
