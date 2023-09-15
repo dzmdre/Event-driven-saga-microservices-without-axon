@@ -115,7 +115,7 @@ public class Order extends AggregateRoot<OrderId> {
         items.forEach(item ->
                 item.initializeOrderItem(
                         super.getId(),
-                        new OrderItemId(UUID.randomUUID())));
+                        new OrderItemId(UUID.randomUUID().getMostSignificantBits())));
     }
 
     public CustomerId getCustomerId() {
