@@ -6,9 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.domain.entity.AggregateRoot;
 import org.dzmdre.food.ordering.system.domain.valueobject.*;
 import org.dzmdre.food.ordering.system.order.service.domain.exception.OrderDomainException;
-import org.dzmdre.food.ordering.system.domain.valueobject.OrderItemId;
 import org.dzmdre.food.ordering.system.order.service.domain.valueobject.StreetAddress;
-import org.dzmdre.food.ordering.system.domain.valueobject.TrackingId;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,6 +24,8 @@ public class Order extends AggregateRoot<OrderId> {
     private TrackingId trackingId;
     private OrderStatus orderStatus = OrderStatus.PENDING;
     private List<String> failureMessages;
+
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
     public void initializeOrder() {
         log.debug("Initializing order");
@@ -117,4 +117,37 @@ public class Order extends AggregateRoot<OrderId> {
                         super.getId(),
                         new OrderItemId(UUID.randomUUID())));
     }
+
+    public CustomerId getCustomerId() {
+        return customerId;
+    }
+
+    public RestaurantId getRestaurantId() {
+        return restaurantId;
+    }
+
+    public StreetAddress getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public TrackingId getTrackingId() {
+        return trackingId;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public List<String> getFailureMessages() {
+        return failureMessages;
+    }
+
 }

@@ -25,7 +25,11 @@ public class Product extends BaseEntity<ProductId> {
         this.price = price;
     }
 
-    public ProductId getProductId(){
-        return super.getId();
+    public String getName() {
+        return name;
+    }
+
+    public Money getPrice() {
+        return price;
     }
 }
