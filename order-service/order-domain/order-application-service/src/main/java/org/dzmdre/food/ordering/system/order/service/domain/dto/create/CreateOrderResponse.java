@@ -1,9 +1,9 @@
 package org.dzmdre.food.ordering.system.order.service.domain.dto.create;
 
-import org.dzmdre.food.ordering.system.domain.valueobject.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.dzmdre.food.ordering.system.domain.valueobject.OrderStatus;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateOrderResponse {
     @NotNull
-    private final UUID orderTackingId;
+    private final UUID orderTrackingId;
     @NotNull
     private final OrderStatus orderStatus;
     @NotNull

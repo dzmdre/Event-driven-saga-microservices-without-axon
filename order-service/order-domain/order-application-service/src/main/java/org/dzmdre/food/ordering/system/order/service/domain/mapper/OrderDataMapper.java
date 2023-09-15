@@ -4,7 +4,6 @@ import org.dzmdre.food.ordering.system.domain.valueobject.*;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderAddress;
-import org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderItemDTO;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.OrderItem;
@@ -22,7 +21,7 @@ public class OrderDataMapper {
 
     public Restaurant createOrderCommandToRestaurant(CreateOrderCommand createOrderCommand) {
         return Restaurant.builder()
-                .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
+                //TODO: add restaurant ID .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .products(createOrderCommand.getItems().stream().map(orderItem ->
                         new Product(new ProductId(orderItem.getProductId())))
                         .collect(Collectors.toList()))
@@ -35,13 +34,13 @@ public class OrderDataMapper {
                 .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getAddress()))
                 .price(new Money(createOrderCommand.getPrice()))
-                .items(orderItemsToOrderItemEntities(createOrderCommand.getItems()))
+                //TODO: add .items(orderItemsToOrderItemEntities(createOrderCommand.getItems()))
                 .build();
     }
 
     public CreateOrderResponse orderToCreateOrderResponse(Order order, String message) {
         return CreateOrderResponse.builder()
-                .orderTackingId(order.getTrackingId().getValue())
+                .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
                 .message(message)
                 .build();
@@ -56,14 +55,14 @@ public class OrderDataMapper {
     }
 
     private List<OrderItem> orderItemsToOrderItemEntities(
-            List<OrderItemDTO> orderItems) {
+            List<OrderItem> orderItems) {
         return orderItems.stream()
                 .map(orderItem ->
                         OrderItem.builder()
-                                .product(new Product(new ProductId(orderItem.getProductId())))
-                                .price(new Money(orderItem.getPrice()))
+                                //TODO:  .product(new Product(new ProductId(orderItem.getProductId())))
+                                //TODO:    .price(new Money(orderItem.getPrice()))
                                 .quantity(orderItem.getQuantity())
-                                .subTotal(new Money(orderItem.getSubTotal()))
+                                //TODO:  .subTotal(new Money(orderItem.getSubTotal()))
                                 .build()).collect(Collectors.toList());
     }
 
