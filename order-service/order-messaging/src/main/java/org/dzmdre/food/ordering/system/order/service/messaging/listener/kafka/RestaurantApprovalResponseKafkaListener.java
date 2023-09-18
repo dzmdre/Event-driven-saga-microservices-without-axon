@@ -1,5 +1,6 @@
 package org.dzmdre.food.ordering.system.order.service.messaging.listener.kafka;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.kafka.consumer.KafkaConsumer;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.OrderApprovalStatus;
@@ -18,17 +19,11 @@ import static org.dzmdre.food.ordering.system.order.service.domain.entity.Order.
 
 @Slf4j
 @Component
+@AllArgsConstructor
 public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<RestaurantApprovalResponseAvroModel> {
 
     private final RestaurantApprovalResponseMessageListener restaurantApprovalResponseMessageListener;
     private final OrderMessagingDataMapper orderMessagingDataMapper;
-
-    public RestaurantApprovalResponseKafkaListener(RestaurantApprovalResponseMessageListener
-                                                           restaurantApprovalResponseMessageListener,
-                                                   OrderMessagingDataMapper orderMessagingDataMapper) {
-        this.restaurantApprovalResponseMessageListener = restaurantApprovalResponseMessageListener;
-        this.orderMessagingDataMapper = orderMessagingDataMapper;
-    }
 
     @Override
     @KafkaListener(id = "${kafka-consumer-config.restaurant-approval-consumer-group-id}",
@@ -42,14 +37,13 @@ public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<Re
                 keys.toString(),
                 partitions.toString(),
                 offsets.toString());
-
         messages.forEach(restaurantApprovalResponseAvroModel -> {
-            if (OrderApprovalStatus.APPROVED == restaurantApprovalResponseAvroModel.getOrderApprovalStatus()) {
+            if (OrderApprovalStatus.APPROVED.toString().equals(restaurantApprovalResponseAvroModel.getOrderApprovalStatus().toString())) {
                 log.info("Processing approved order for order id: {}",
                         restaurantApprovalResponseAvroModel.getOrderId());
                 restaurantApprovalResponseMessageListener.orderApproved(orderMessagingDataMapper
                         .approvalResponseAvroModelToApprovalResponse(restaurantApprovalResponseAvroModel));
-            } else if (OrderApprovalStatus.REJECTED == restaurantApprovalResponseAvroModel.getOrderApprovalStatus()) {
+            } else if (OrderApprovalStatus.REJECTED.toString().equals(restaurantApprovalResponseAvroModel.getOrderApprovalStatus().toString())) {
                 log.info("Processing rejected order for order id: {}, with failure messages: {}",
                         restaurantApprovalResponseAvroModel.getOrderId(),
                         String.join(FAILURE_MESSAGE_DELIMITER,
@@ -58,6 +52,5 @@ public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<Re
                         .approvalResponseAvroModelToApprovalResponse(restaurantApprovalResponseAvroModel));
             }
         });
-
     }
 }
