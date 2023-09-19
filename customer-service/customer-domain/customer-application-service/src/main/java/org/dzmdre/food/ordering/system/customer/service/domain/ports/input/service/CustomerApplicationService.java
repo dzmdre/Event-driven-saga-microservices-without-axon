@@ -3,7 +3,7 @@ package org.dzmdre.food.ordering.system.customer.service.domain.ports.input.serv
 import org.dzmdre.food.ordering.system.customer.service.domain.create.CreateCustomerCommand;
 import org.dzmdre.food.ordering.system.customer.service.domain.create.CreateCustomerResponse;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 public interface CustomerApplicationService {
 

@@ -5,7 +5,7 @@ import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrd
 import org.dzmdre.food.ordering.system.order.service.domain.dto.track.TrackOrderQuery;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 public interface OrderApplicationService {
 

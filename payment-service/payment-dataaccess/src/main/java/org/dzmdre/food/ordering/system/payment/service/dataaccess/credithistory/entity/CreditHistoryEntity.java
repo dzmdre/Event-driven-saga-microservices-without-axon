@@ -3,7 +3,7 @@ package org.dzmdre.food.ordering.system.payment.service.dataaccess.credithistory
 import lombok.*;
 import org.dzmdre.food.ordering.system.payment.service.domain.valueobject.TransactionType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
