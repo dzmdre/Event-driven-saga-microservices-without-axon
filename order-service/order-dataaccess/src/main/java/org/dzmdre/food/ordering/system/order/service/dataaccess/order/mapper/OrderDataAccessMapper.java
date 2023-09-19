@@ -7,6 +7,7 @@ import org.dzmdre.food.ordering.system.order.service.dataaccess.order.entity.Ord
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.OrderItem;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Product;
+import org.dzmdre.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import org.dzmdre.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
