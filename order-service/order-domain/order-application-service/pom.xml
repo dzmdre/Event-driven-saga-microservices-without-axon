@@ -13,11 +13,15 @@
     <dependencies>
         <dependency>
             <groupId>org.dzmdre.food.ordering.system</groupId>
-            <artifactId>order-domain-core</artifactId>
+            <artifactId>saga</artifactId>
         </dependency>
         <dependency>
             <groupId>org.dzmdre.food.ordering.system</groupId>
-            <artifactId>saga</artifactId>
+            <artifactId>outbox</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dzmdre.food.ordering.system</groupId>
+            <artifactId>order-domain-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.dzmdre.food.ordering.system</groupId>
@@ -30,6 +34,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>

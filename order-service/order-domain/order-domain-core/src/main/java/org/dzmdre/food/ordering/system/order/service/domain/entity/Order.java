@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.dzmdre.food.ordering.system.domain.entity.AggregateRoot;
 import org.dzmdre.food.ordering.system.domain.valueobject.*;
 import org.dzmdre.food.ordering.system.order.service.domain.exception.OrderDomainException;
+import org.dzmdre.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import org.dzmdre.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 
 import java.util.List;

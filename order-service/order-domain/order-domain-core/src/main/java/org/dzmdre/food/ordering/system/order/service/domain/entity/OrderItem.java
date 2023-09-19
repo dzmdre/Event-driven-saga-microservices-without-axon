@@ -5,7 +5,8 @@ import lombok.Getter;
 import org.dzmdre.food.ordering.system.domain.entity.BaseEntity;
 import org.dzmdre.food.ordering.system.domain.valueobject.Money;
 import org.dzmdre.food.ordering.system.domain.valueobject.OrderId;
-import org.dzmdre.food.ordering.system.domain.valueobject.OrderItemId;
+import org.dzmdre.food.ordering.system.order.service.domain.valueobject.OrderItemId;
+
 
 @Getter
 public class OrderItem extends BaseEntity<OrderItemId> {
