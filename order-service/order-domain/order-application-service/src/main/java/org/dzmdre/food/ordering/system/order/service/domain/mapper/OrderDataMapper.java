@@ -4,6 +4,7 @@ import org.dzmdre.food.ordering.system.domain.valueobject.*;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderAddress;
+import org.dzmdre.food.ordering.system.order.service.domain.dto.message.CustomerModel;
 import org.dzmdre.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.*;
 import org.dzmdre.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
@@ -93,6 +94,12 @@ public class OrderDataMapper {
                 .build();
     }
 
+    public Customer customerModelToCustomer(CustomerModel customerModel) {
+        return new Customer(new CustomerId(UUID.fromString(customerModel.getId())),
+                customerModel.getUsername(),
+                customerModel.getFirstName(),
+                customerModel.getLastName());
+    }
 
     private List<OrderItem> orderItemsToOrderItemEntities(
             List<org.dzmdre.food.ordering.system.order.service.domain.dto.create.OrderItem> orderItems) {
