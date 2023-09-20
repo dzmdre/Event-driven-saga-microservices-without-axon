@@ -1,6 +1,5 @@
 package org.dzmdre.food.ordering.system.order.service.messaging.publisher.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import org.dzmdre.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import org.dzmdre.food.ordering.system.kafka.producer.service.KafkaProducer;

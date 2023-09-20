@@ -3,7 +3,6 @@ package org.dzmdre.food.ordering.system.order.service.messaging.listener.kafka;
 import org.dzmdre.food.ordering.system.kafka.consumer.KafkaConsumer;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.OrderApprovalStatus;
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
-import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.exception.OrderNotFoundException;
 import org.dzmdre.food.ordering.system.order.service.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
 import org.dzmdre.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;

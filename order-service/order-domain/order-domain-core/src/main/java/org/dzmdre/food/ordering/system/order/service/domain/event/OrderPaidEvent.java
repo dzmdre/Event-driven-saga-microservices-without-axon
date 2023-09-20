@@ -1,6 +1,5 @@
 package org.dzmdre.food.ordering.system.order.service.domain.event;
 
-import org.dzmdre.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 
 import java.time.ZonedDateTime;

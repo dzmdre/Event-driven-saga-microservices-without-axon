@@ -2,7 +2,6 @@ package org.dzmdre.food.ordering.system.kafka.producer.service;
 
 import org.apache.avro.specific.SpecificRecordBase;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.io.Serializable;
 import java.util.function.BiConsumer;

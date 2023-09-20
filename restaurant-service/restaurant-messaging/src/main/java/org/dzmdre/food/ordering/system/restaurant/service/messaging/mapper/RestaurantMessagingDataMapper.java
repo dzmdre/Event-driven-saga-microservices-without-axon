@@ -7,8 +7,6 @@ import org.dzmdre.food.ordering.system.kafka.order.avro.model.RestaurantApproval
 import org.dzmdre.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
 import org.dzmdre.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
 import org.dzmdre.food.ordering.system.restaurant.service.domain.entity.Product;
-import org.dzmdre.food.ordering.system.restaurant.service.domain.event.OrderApprovedEvent;
-import org.dzmdre.food.ordering.system.restaurant.service.domain.event.OrderRejectedEvent;
 import org.dzmdre.food.ordering.system.restaurant.service.domain.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 

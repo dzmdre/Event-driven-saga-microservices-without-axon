@@ -1,6 +1,5 @@
 package org.dzmdre.food.ordering.system.order.service.domain.outbox.scheduler.approval;
 
-import org.dzmdre.food.ordering.system.order.service.domain.entity.Order;
 import org.dzmdre.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
 import org.dzmdre.food.ordering.system.outbox.OutboxScheduler;
 import org.dzmdre.food.ordering.system.outbox.OutboxStatus;

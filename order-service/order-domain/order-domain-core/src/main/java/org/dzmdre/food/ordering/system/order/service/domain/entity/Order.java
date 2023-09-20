@@ -10,6 +10,7 @@ import org.dzmdre.food.ordering.system.order.service.domain.valueobject.OrderIte
 import org.dzmdre.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -41,7 +42,7 @@ public class Order extends AggregateRoot<OrderId> {
         this.price = price;
         this.items = items;
         this.trackingId = trackingId;
-        this.orderStatus = orderStatus;
+        this.orderStatus = Optional.of(orderStatus).orElse(OrderStatus.PENDING);
         this.failureMessages = failureMessages;
         setId(orderId);
     }
