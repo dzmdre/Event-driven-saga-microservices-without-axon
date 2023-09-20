@@ -1,8 +1,10 @@
 package org.dzmdre.food.ordering.system.order.service.domain.entity;
 
+import lombok.Getter;
 import org.dzmdre.food.ordering.system.domain.entity.AggregateRoot;
 import org.dzmdre.food.ordering.system.domain.valueobject.CustomerId;
 
+@Getter
 public class Customer extends AggregateRoot<CustomerId> {
 
     private String username;
@@ -20,15 +22,4 @@ public class Customer extends AggregateRoot<CustomerId> {
         super.setId(customerId);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 }
