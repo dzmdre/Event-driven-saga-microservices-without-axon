@@ -42,7 +42,7 @@ public class Order extends AggregateRoot<OrderId> {
         this.price = price;
         this.items = items;
         this.trackingId = trackingId;
-        this.orderStatus = Optional.of(orderStatus).orElse(OrderStatus.PENDING);
+        this.orderStatus = Optional.ofNullable(orderStatus).orElse(OrderStatus.PENDING);
         this.failureMessages = failureMessages;
         setId(orderId);
     }
