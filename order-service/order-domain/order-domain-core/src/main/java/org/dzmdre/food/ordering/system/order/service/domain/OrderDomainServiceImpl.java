@@ -65,6 +65,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
         order.getItems().forEach(orderItem -> restaurant.getProducts().forEach(restaurantProduct -> {
             Product currentProduct = orderItem.getProduct();
             if (currentProduct.equals(restaurantProduct)) {
+                //TODO: if there is no product in this restaurant ->  price will be null -> incorrect price response
                 currentProduct.updateWithConfirmedNameAndPrice(restaurantProduct.getName(),
                         restaurantProduct.getPrice());
             }
